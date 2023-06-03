@@ -73,65 +73,7 @@ class MyQueue<T>{
 
 
 
-
-
-function orangesRotting(grid: number[][]): number {
-
-  let time:number = 0;
-  let deltaRow = [-1,+1,0,0];
-  let deltaColumn = [0,0,+1,-1]
-
-  let n = grid.length;
-  let m  = grid[0].length;
-
-let visGrid:number[][] = Array(n).fill([]);
-for(let i=0;i<n;i++){
-  visGrid[i] = Array(m).fill(0);
-}
-
-  let q = new MyQueue<[[number,number],number]>();
-
-  for(let i =0;i<n;i++){
-    for(let j = 0;j<m;j++){
-          if(grid[i][j] === 2){
-            q.push([[i,j],0]);
-            visGrid[i][j] = 2;
-          }
-          else{
-            visGrid[i][j] = 0;
-          }
-    }
-  }
-
-  while(!q.isEmpty()){
-    
-    let front  = q.front()
-    q.pop();
-    let value = front!.value;
-    let r = value![0][0];
-    let c = value![0][1];
-    let t = value![1];
-
-    for(let i=0;i<4;i++){
-      let row = r + deltaRow[i];
-      let col = c+ deltaColumn[i];
-
-      if(row>=0 && row<n && col>=0 && col<m && visGrid[row][col]==2 && grid[row][col]==1 ){
-              q.push([[row,col],t+1]);
-              visGrid[row][col] = 2;
-
-      }
-
-    }
-  time++;
-
-  }
-
-
-return time?time:-1;
-
-};
-
+ 
 
 
 
