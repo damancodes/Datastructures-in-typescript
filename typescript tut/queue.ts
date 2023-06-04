@@ -32,7 +32,14 @@ class MyQueue<T>{
         return this._size ? false:true;
     }
 
-
+    print():void{
+        let curHead =this.head;
+        while(curHead){
+          console.log(curHead.value);
+          curHead = curHead.next;
+        }
+    }
+    
     push(value:T):void{
         const newNode = new QueueNode<T>(value);
         this._size++;
